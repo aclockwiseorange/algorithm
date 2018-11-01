@@ -18,27 +18,31 @@ public class MergeSort {
     }
 
     private static void merge(int[] array, int start, int middle, int end) {
-        int i = 0;
-        int j = 0;
+        int l = 0;
+        int r = 0;
+        int k = start;
         int[] left = Arrays.copyOfRange(array, start, middle+1);//from is inclusive, end is exclusive
         int[] right = Arrays.copyOfRange(array, middle+1, end+1);
-        for(int k=start; k<=end; k++) {
-            if (i > left.length-1) {//already end of left
-                array[k] = right[j++];
-            } else if (j > right.length-1) {//already end of right
-                array[k] = left[i++];
-            } else if (left[i] < right[j]) {
-                array[k] = left[i++];
+        while(l<left.length && r<right.length) {
+            if (left[l] < right[r]) {
+                array[k++] = left[l++];
             } else {
-                array[k] = right[j++];
+                array[k++] = right[r++];
             }
+        }
+
+        while(l<left.length) {
+            array[k++] = left[l++];
+        }
+
+        while(r<right.length) {
+            array[k++] = right[r++];
         }
     }
 
     @Test
     public void test() {
-        int[] array = new Random().ints(5, 1, 10).toArray();
-        int[] a = Arrays.copyOfRange(array, 0, 0);
+        int[] array = new Random().ints(100, 1, 1000).toArray();
         int[] sortedArray = Arrays.stream(array).sorted().toArray();
         MergeSort.sort(array, 0, array.length-1);
         assertArrayEquals(sortedArray, array);
