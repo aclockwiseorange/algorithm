@@ -23,9 +23,11 @@ public class InsertionSort {
 
     @Test
     public void test() {
-        int[] array = new Random().ints(100, 1, 1000).toArray();
-        int[] sortedArray = Arrays.stream(array).sorted().toArray();
-        InsertionSort.sort(array);
-        assertArrayEquals(sortedArray, array);
+        for(int i=0; i<TestConstants.LOOP_NUMBER; i++) {
+            int[] array = new Random().ints(TestConstants.ARRAY_SIZE, TestConstants.MIN_NUMBER, TestConstants.MAX_NUMBER).toArray();
+            int[] sortedArray = Arrays.stream(array).sorted().toArray();
+            InsertionSort.sort(array);
+            assertArrayEquals(sortedArray, array);
+        }
     }
 }
