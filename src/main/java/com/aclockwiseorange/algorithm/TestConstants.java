@@ -1,4 +1,4 @@
-package com.aclockwiseorange.alrorithm;
+package com.aclockwiseorange.algorithm;
 
 public class TestConstants {
     public static final int LOOP_NUMBER = 100;

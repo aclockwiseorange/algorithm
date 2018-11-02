@@ -1,4 +1,4 @@
-package com.aclockwiseorange.alrorithm;
+package com.aclockwiseorange.algorithm;
 
 import org.junit.jupiter.api.Test;
 
